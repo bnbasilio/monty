@@ -56,6 +56,7 @@ char **tokenize(char *fb)
 	av[0] = strtok(fb, '\n');
 	for (i = 1; fb != NULL; i++)
 		av[i] = strtok(NULL, '\n');
+	av[i] = NULL;
 
 	return (av);
 }
