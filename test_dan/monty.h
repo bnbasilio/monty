@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,7 +40,9 @@ typedef struct instruction_s
 } instruction_t;
 
 ssize_t read_textfile(const char *filename, size_t letters);
+extern int value;
 void add_dstack_list(stack_t **stack, unsigned int line_number);
-void (*get_opcode(char *s))(stack_t, unsigned int);
+void pall_dstack_list(stack_t **stack, unsigned int line_number);
+void (*get_opcode(char *s))(stack_t **, unsigned int);
 
 #endif

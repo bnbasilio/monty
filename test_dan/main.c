@@ -1,24 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "monty.h"
-
+#include <string.h>
 /**
  * main - check the code for Holberton School students.
  *
  * Return: Always 0.
  */
-int main(int ac, char **av)
+int main()
 {
-	ssize_t n;
+	char *line[]= {"    push    sdfs ", "   push   873","pall", NULL};
+	char *l_tok = NULL;
+	char *cmd= NULL;
+	char *num = NULL;
+	unsigned int i = 0;
+	stack_t *head = NULL;
 
-	if (ac != 2)
+	while(line[i])
 	{
-		dprintf(2, "Usage: %s filename\n", av[0]);
-		exit(1);
+		l_tok = strdup(line[i]);
+		cmd = strtok(l_tok," \0");
+		cmd = strtok(NULL, " ");
+		if (cmd != NULL)
+		{
+			num = cmd;
+			free(l_tok);
+			l_tok = strdup(line[i]);
+			cmd = strtok(l_tok, " ");
+			if (!(value = atoi(num)))
+			{
+				dprintf(STDERR_FILENO,"L<line_number>: usage: push integer\n");
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			free(l_tok);
+			l_tok = strdup(line[i]);
+			cmd = strtok(l_tok, " ");
+		}
+		get_opcode(cmd)(&head, 0);
+		free(l_tok);
+		i++;
 	}
-	n = read_textfile(av[1], 114);
-	printf("\n(printed chars: %li)\n", n);
-	n = read_textfile(av[1], 1024);
-	printf("\n(printed chars: %li)\n", n);
+	/*get_opcode("pall")(&head, 0);*/
 	return (0);
 }
