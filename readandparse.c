@@ -8,7 +8,7 @@
  * Return: number of characters actually read
  */
 
-char* read_textfile(const char* file, size_t chars)
+char *read_textfile(const char* file, size_t chars)
 {
 	int fd;
 	char *buffer;
@@ -39,4 +39,23 @@ char* read_textfile(const char* file, size_t chars)
 
 	close(fd);
 	return (buffer);
+}
+
+/**
+ * tokenize - splits a buffer into tokens
+ * @fb: file buffer to be tokenized
+ */
+
+char **tokenize(char *fb)
+{
+	char **av;
+
+	if (!fb)
+		return (NULL);
+
+	av[0] = strtok(fb, '\n');
+	for (i = 1; fb != NULL; i++)
+		av[i] = strtok(NULL, '\n');
+
+	return (av);
 }
