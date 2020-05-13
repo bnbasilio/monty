@@ -12,7 +12,7 @@ char* read_textfile(const char* file, size_t chars)
 	char *buffer;
 	ssize_t read_len;
 	if (!file)
-		return (0);
+		return (NULL);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (0);
@@ -20,14 +20,14 @@ char* read_textfile(const char* file, size_t chars)
 	if (!buffer)
 	{
 		close(fd);
-		return (0);
+		return (NULL);
 	}
 	read_len = read(fd, buffer, chars);
 	if (read_len == -1)
 	{
 		free(buffer);
 		close(fd);
-		return (0);
+		return (NULL);
 	}
 	buffer[read_len] = '\0';
 	close(fd);

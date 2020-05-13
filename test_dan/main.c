@@ -9,7 +9,7 @@
  */
 int main()
 {
-	char *line[]= {"    push    200 ", "   push   -9","push 2",
+	char *line[]= {"    push    200 ", "   push   -9", "push 2",
 		       "push 64", "push 69","push -",
 		       "pall", NULL};
 	char *l_tok = NULL;
@@ -17,7 +17,13 @@ int main()
 	char *num = NULL;
 	unsigned int i = 0;
 	stack_t *head = NULL;
-
+/**
+	if (ac != 2)
+	{
+		dprintf(2, "Usage: %s filename\n", av[0]);
+		exit(EXIT_FAILURE);
+	}
+*/
 	while(line[i])
 	{
 		l_tok = strdup(line[i]);
