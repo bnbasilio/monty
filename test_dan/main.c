@@ -9,7 +9,9 @@
  */
 int main()
 {
-	char *line[]= {"    push    sdfs ", "   push   873","pall", NULL};
+	char *line[]= {"    push    200 ", "   push   -9","push 2",
+		       "push 64", "push 69","push -",
+		       "pall", NULL};
 	char *l_tok = NULL;
 	char *cmd= NULL;
 	char *num = NULL;
@@ -29,7 +31,7 @@ int main()
 			cmd = strtok(l_tok, " ");
 			if (!(value = atoi(num)))
 			{
-				dprintf(STDERR_FILENO,"L<line_number>: usage: push integer\n");
+				dprintf(STDERR_FILENO,"L%d: usage: push integer\n", i + 1);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -43,6 +45,5 @@ int main()
 		free(l_tok);
 		i++;
 	}
-	/*get_opcode("pall")(&head, 0);*/
 	return (0);
 }
