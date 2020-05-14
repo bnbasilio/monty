@@ -79,6 +79,7 @@ char **tokenize(char *fb)
 	{
 		av_tok = strtok(NULL, "\n");
 		av[i] = av_tok;
+		
 	}
 
 	return (av);
