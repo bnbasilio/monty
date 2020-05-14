@@ -39,4 +39,5 @@ void exe_monty(char **av_line)
 		free(l_tok);
 		i++;
 	}
+	free_stack(head);
 }
