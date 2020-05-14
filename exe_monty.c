@@ -16,7 +16,6 @@ void exe_monty(char **av_line)
 		l_tok = strdup(av_line[i]);
 		cmd = strtok(l_tok, " \0");
 		cmd = strtok(NULL, " ");
-		printf("%s\n",l_tok);
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{
 			num = cmd;
