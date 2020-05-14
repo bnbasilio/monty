@@ -49,14 +49,28 @@ char *read_textfile(const char *file, size_t chars)
 
 char **tokenize(char *fb)
 {
-	char **av;
+	char *fb_dup = NULL;
+	char **av = NULL;
+	int i, str_count, n;
 
 	if (!fb)
 		return (NULL);
 
-	av[0] = strtok(fb, '\n');
-	for (i = 1; fb != NULL; i++)
-		av[i] = strtok(NULL, '\n');
+	fb_dup = strdup(fb);
+	for (n = 0, str_count = 0; fb_dup[n]; n++)
+	{
+		if (fb_dup[n] == '\n')
+			str_count++;
+	}
+
+	av = malloc(sizeof(char*) * (str_count + 1));
+	if (!av)
+		return (NULL);
+
+	av[0] = strtok(fb, "\n");
+	printf("%s\n", av[0]);
+	for (i = 1; fb; i++)
+		av[i] = strtok(NULL, "\n");
 	av[i] = NULL;
 
 	return (av);
