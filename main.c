@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		dprintf(2, "Usage: %s filename\n", argv[0]);
+		dprintf(STDERR_FILENO, "Usage: %s filename\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 	line = read_textfile(argv[1], 1024);

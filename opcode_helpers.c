@@ -44,6 +44,8 @@ void pall_dstack_list(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head;
 	(void)line_number;
+	if (!stack)
+		return;
 	head = *stack;
 	for ( ; head; head = head->next)
 	{
