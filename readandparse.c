@@ -62,6 +62,7 @@ char **tokenize(char *fb)
 		if (fb_dup[n] == '\n')
 			str_count++;
 	}
+	free(fb_dup);
 
 	av = malloc(sizeof(char *) * (str_count + 1));
 	if (!av)
@@ -69,12 +70,12 @@ char **tokenize(char *fb)
 
 	av_tok = strtok(fb, "\n");
 	av[0] = av_tok;
-	printf("%s\n", av[0]);
 	for (i = 1; av_tok; i++)
 	{
 		av_tok = strtok(NULL, "\n");
 		av[i] = av_tok;
 	}
+	i++;
 	av[i] = NULL;
 
 	return (av);
