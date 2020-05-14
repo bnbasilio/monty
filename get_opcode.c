@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * get_opcode - function that selects the operation
  * @s: string to compare for opcode
@@ -14,7 +13,7 @@ void (*get_opcode(char *s))(stack_t **, unsigned int)
 	};
 	int i = 0;
 
-	while(ops[i].opcode != NULL)
+	while (ops[i].opcode != NULL)
 	{
 		if (strcmp(s, ops[i].opcode) == 0)
 		{
