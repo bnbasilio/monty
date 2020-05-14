@@ -7,33 +7,34 @@
  *
  * Return: Always 0.
  */
-int main()
+int main(int argc, char **argv)
 {
-	char *line[]= {"    push    200 ", "   push   -9", "push 2",
-		       "push 64", "push 69","push -",
-		       "pall", NULL};
+	char *line = NULL;
+	char **av_line= NULL;
 	char *l_tok = NULL;
 	char *cmd= NULL;
 	char *num = NULL;
 	unsigned int i = 0;
 	stack_t *head = NULL;
-/**
-	if (ac != 2)
+
+	if (argc != 2)
 	{
-		dprintf(2, "Usage: %s filename\n", av[0]);
+		dprintf(2, "Usage: %s filename\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
-*/
-	while(line[i])
+	line = read_textfile(argv[1], 1024);
+	av_line = tokenize(line);
+
+	while(av_line[i])
 	{
-		l_tok = strdup(line[i]);
+		l_tok = strdup(av_line[i]);
 		cmd = strtok(l_tok," \0");
 		cmd = strtok(NULL, " ");
-		if (cmd != NULL)
+		if (cmd != NULL)/*check for another argument after cmd*/
 		{
 			num = cmd;
 			free(l_tok);
-			l_tok = strdup(line[i]);
+			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
 			if (!(value = atoi(num)))
 			{
@@ -44,7 +45,7 @@ int main()
 		else
 		{
 			free(l_tok);
-			l_tok = strdup(line[i]);
+			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
 		}
 		get_opcode(cmd)(&head, 0);

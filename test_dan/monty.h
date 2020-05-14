@@ -40,6 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 
 char *read_textfile(const char *filename, size_t letters);
+char **tokenize(char *fb);
 extern int value;
 void add_dstack_list(stack_t **stack, unsigned int line_number);
 void pall_dstack_list(stack_t **stack, unsigned int line_number);
