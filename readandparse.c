@@ -19,13 +19,16 @@ char *read_textfile(const char *file, size_t chars)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
-
+	{
+		dprintf(STDERR_FILENO,"Error: Can't open file %s\n", file);
+		exit(EXIT_FAILURE);
+	}
 	buffer = malloc(sizeof(char) * (chars + 1));
 	if (!buffer)
 	{
 		close(fd);
-		return (NULL);
+		dprintf(STDERR_FILENO,"Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	read_len = read(fd, buffer, chars);
