@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 	}
 	line = read_textfile(argv[1], 1024);
 	av_line = tokenize(line);
+	free(line);
 
 	exe_monty(av_line);
 	return (0);
