@@ -37,6 +37,12 @@ void exe_monty(char **av_line)
 			free(l_tok);
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
+			if (cmd == NULL)
+			{
+				i++;
+				free(l_tok);
+				continue;
+			}
 		}
 		get_opcode(cmd)(&head, 0);
 		free(l_tok);
