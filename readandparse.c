@@ -62,6 +62,7 @@ char **tokenize(char *fb)
 		if (fb_dup[n] == '\n')
 			str_count++;
 	}
+	free(fb_dup);
 
 	av = malloc(sizeof(char *) * (str_count + 1));
 	if (!av)
