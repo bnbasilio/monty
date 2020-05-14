@@ -44,7 +44,9 @@ char **tokenize(char *fb);
 void add_dstack_list(stack_t **stack, unsigned int line_number);
 void pall_dstack_list(stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *s))(stack_t **, unsigned int);
+/*free.c*/
 void free_stack(stack_t *head);
+void free_av(char **line_av);
 /*exe_monty.c*/
 void exe_monty(char **av_line);
 #endif

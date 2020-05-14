@@ -24,5 +24,6 @@ int main(int argc, char **argv)
 	free(line);
 
 	exe_monty(av_line);
+	free_av(av_line);
 	return (0);
 }
