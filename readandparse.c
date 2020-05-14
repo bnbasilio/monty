@@ -8,7 +8,7 @@
  * Return: number of characters actually read
  */
 
-char *read_textfile(const char* file, size_t chars)
+char *read_textfile(const char *file, size_t chars)
 {
 	int fd;
 	char *buffer;
@@ -44,6 +44,7 @@ char *read_textfile(const char* file, size_t chars)
 /**
  * tokenize - splits a buffer into tokens
  * @fb: file buffer to be tokenized
+ * Return: an array of tokens
  */
 
 char **tokenize(char *fb)
