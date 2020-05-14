@@ -49,6 +49,9 @@ void pint_monty(stack_t **stack, unsigned int line_number);
 /*free.c*/
 void free_stack(stack_t *head);
 void free_av(char **line_av);
+void free_all(char *tok, char *line);
+/*error.c*/
+void print_error_usage(unsigned int line_number);
 /*exe_monty.c*/
 void exe_monty(char **av_line);
 #endif

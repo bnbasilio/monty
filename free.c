@@ -1,5 +1,15 @@
 #include "monty.h"
 /**
+ * free_all - the function that frees two strings
+ * @tok: copy string for tokenize
+ * @line: string
+ */
+void free_all(char *tok, char *line)
+{
+	free(tok);
+	free(line);
+}
+/**
  * free_stack - frees a stack
  * @head: pointer to the head node of a doubly linked list
  */
