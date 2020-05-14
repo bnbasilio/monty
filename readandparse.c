@@ -70,12 +70,12 @@ char **tokenize(char *fb)
 
 	av_tok = strtok(fb, "\n");
 	av[0] = av_tok;
-	printf("%s\n", av[0]);
 	for (i = 1; av_tok; i++)
 	{
 		av_tok = strtok(NULL, "\n");
 		av[i] = av_tok;
 	}
+	i++;
 	av[i] = NULL;
 
 	return (av);
