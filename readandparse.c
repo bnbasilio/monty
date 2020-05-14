@@ -21,7 +21,7 @@ char *read_textfile(const char *file, size_t chars)
 	if (fd == -1)
 		return (NULL);
 
-	buffer = malloc(sizeof(char) * chars);
+	buffer = malloc(sizeof(char) * (chars + 1));
 	if (!buffer)
 	{
 		close(fd);

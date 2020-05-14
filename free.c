@@ -29,9 +29,6 @@ void free_av(char **line_av)
 	{
 		free(line_av[i]);
 	}
-	if (line_av[i] == NULL)
-	{
-		free(line_av[i]);
-	}
+
 	free(line_av);
 }
