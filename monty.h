@@ -38,10 +38,11 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+extern int value;
 char *read_textfile(const char* file, size_t chars);
 char **tokenize(char *fb);
 void add_dstack_list(stack_t **stack, unsigned int line_number);
-void (*get_opcode(char *s))(stack_t, unsigned int);
+void pall_dstack_list(stack_t **stack, unsigned int line_number);
+void (*get_opcode(char *s))(stack_t **, unsigned int);
 
 #endif
