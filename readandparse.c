@@ -69,8 +69,10 @@ char **tokenize(char *fb)
 
 	av = malloc(sizeof(char *) * (str_count + 1));
 	if (!av)
-		return (NULL);
-
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	av_tok = strtok(fb, "\n");
 	av[0] = av_tok;
 	for (i = 1; av_tok; i++)
@@ -78,8 +80,6 @@ char **tokenize(char *fb)
 		av_tok = strtok(NULL, "\n");
 		av[i] = av_tok;
 	}
-	i++;
-	av[i] = NULL;
 
 	return (av);
 }

@@ -19,15 +19,16 @@ void exe_monty(char **av_line)
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{
 			num = cmd;
-			free(l_tok);
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
-			if (!(atoi(num)))
+			value = atoi(num);
+			if (!(value))
 			{
+				free(l_tok);
+				free(av_line);
 				dprintf(STDERR_FILENO, "L%d: usage: push integer\n", i + 1);
 				exit(EXIT_FAILURE);
 			}
-			value = atoi(num);
 		}
 		else
 		{
