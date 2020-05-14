@@ -11,7 +11,7 @@ void exe_monty(char **av_line)
 	unsigned int i = 0;
 	stack_t *head = NULL;
 
-		while (av_line[i])
+	while (av_line[i])
 	{
 		l_tok = strdup(av_line[i]);
 		cmd = strtok(l_tok, " \0");
