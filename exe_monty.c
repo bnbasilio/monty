@@ -18,11 +18,12 @@ void exe_monty(char **av_line)
 		cmd = strtok(NULL, " ");
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{
-			num = cmd;
+			num = strdup(cmd);
 			free(l_tok);
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
 			value = atoi(num);
+			free(num);
 			if (!(value))
 			{
 				free(l_tok);
