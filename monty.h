@@ -76,5 +76,5 @@ void free_all(char *tok, char *line);
 void print_error_usage(unsigned int line_number);
 /*exe_monty.c*/
 void exe_monty(char **av_line);
-void do_non_int_error(char *l_tok, char *num);
+void do_non_int_error(char *l_tok);
 #endif
