@@ -12,7 +12,7 @@
 int main(int argc, char **argv)
 {
 	char *line = NULL;
-	
+
 
 	if (argc != 2)
 	{
