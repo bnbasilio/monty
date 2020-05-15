@@ -46,7 +46,10 @@ void exe_monty(char **av_line)
 	}
 	free_stack(global.stack);
 }
-
+/**
+ * do_non_int_error - a function that prints error message
+ * @l_tok: string token buffer
+ */
 void do_non_int_error(char *l_tok)
 {
 	free(l_tok);
