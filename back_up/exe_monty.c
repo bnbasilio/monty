@@ -23,6 +23,7 @@ void exe_monty(char **av_line)
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
 			global.value = atoi(num);
+			printf("value: %d\n", global.value);
 			free(num);
 			if (!(global.value))
 			{
@@ -41,20 +42,10 @@ void exe_monty(char **av_line)
 				free(l_tok);
 				continue;
 			}
-			else if (strcmp(cmd, "push") == 0)
-			{
-				print_error_usage(global.line_number);
-
-			}
 		}
 		get_opcode(cmd)(&head, global.line_number);
 		free(l_tok);
 		i++;
 	}
 	free_stack(head);
-}
-
-void check_args(char *cmd, unsigned int line_number)
-{
-	
 }
