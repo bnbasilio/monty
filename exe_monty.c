@@ -1,5 +1,4 @@
 #include "monty.h"
-unsigned int exe_line(char *cmd, char *l_tok, unsigned int i);
 /**
  * exe_monty - a fucntion that executes the bytecode .m file
  * @av_line: contents from .m file in array of strings
@@ -14,12 +13,6 @@ void exe_monty(char **av_line)
 		global.line_number = i + 1;
 		l_tok = strdup(av_line[i]);
 		cmd = strtok(l_tok, " \0");
-		if (cmd[0] == '#')
-		{
-			free(l_tok);
-			i++;
-			continue;
-		}
 		cmd = strtok(NULL, " ");
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{
@@ -47,7 +40,9 @@ void exe_monty(char **av_line)
 				print_error_usage(global.line_number);
 
 		}
-		i = exe_line(cmd, l_tok, i);
+		get_opcode(cmd)(&global.stack, global.line_number);
+		free(l_tok);
+		i++;
 	}
 	free_stack(global.stack);
 }
@@ -67,11 +62,15 @@ void do_non_int_error(char *l_tok)
  * exe_line - function that executes op_fucntions
  * free the string tok buffer and returns next
  * index value
- * @
+ * @cmd: command name
+ * @l_tok: string token buffer
+ * @i: value of index for av_line
+ * Return: new index value for av_line
  */
-int exe_line(char *cmd, char *l_tok, unsigned int i)
+unsigned int exe_line(char *cmd, char *l_tok, unsigned int i)
 {
 	int new;
+
 	get_opcode(cmd)(&global.stack, global.line_number);
 	free(l_tok);
 	new = i + 1;
