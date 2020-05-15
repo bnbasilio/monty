@@ -5,9 +5,7 @@
  */
 void exe_monty(char **av_line)
 {
-	char *l_tok = NULL;
-	char *cmd = NULL;
-	char *num = NULL;
+	char *l_tok = NULL, *cmd = NULL, *num = NULL;
 	unsigned int i = 0;
 	stack_t *head = NULL;
 
@@ -26,10 +24,8 @@ void exe_monty(char **av_line)
 			free(num);
 			if (!(value))
 			{
-				free(l_tok);
-				free(av_line);
-				dprintf(STDERR_FILENO, "L%d: usage: push integer\n", i + 1);
-				exit(EXIT_FAILURE);
+				free_all(l_tok, num);
+				print_error_usage(i + 1);
 			}
 		}
 		else
