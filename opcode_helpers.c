@@ -68,6 +68,8 @@ void pint_monty(stack_t **stack, unsigned int line_number)
 	else
 	{
 		/*FREE*/
+		free(global.av_line);
+		free_stack(global.stack);
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}

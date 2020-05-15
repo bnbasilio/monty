@@ -12,7 +12,7 @@
 int main(int argc, char **argv)
 {
 	char *line = NULL;
-	char **av_line = NULL;
+	
 
 	if (argc != 2)
 	{
@@ -20,10 +20,10 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	line = read_textfile(argv[1], 1024);
-	av_line = tokenize(line);
+	global.av_line = tokenize(line);
 
-	exe_monty(av_line);
-	free(av_line);
+	exe_monty(global.av_line);
+	free(global.av_line);
 	free(line);
 	return (0);
 }

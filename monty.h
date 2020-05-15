@@ -43,8 +43,10 @@ typedef struct instruction_s
 /*global*/
 typedef struct global_s
 {
+	stack_t *stack;
 	unsigned int line_number;
 	int value;
+	char **av_line;
 } global_t;
 
 extern global_t global;

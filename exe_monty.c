@@ -7,12 +7,10 @@ void exe_monty(char **av_line)
 {
 	char *l_tok = NULL, *cmd = NULL, *num = NULL;
 	unsigned int i = 0;
-	stack_t *head = NULL;
 
 	while (av_line[i])
 	{
 		global.line_number = i + 1;
-		printf("av[%d] is %s\n", i, av_line[i]);
 		l_tok = strdup(av_line[i]);
 		cmd = strtok(l_tok, " \0");
 		cmd = strtok(NULL, " ");
@@ -47,14 +45,15 @@ void exe_monty(char **av_line)
 
 			}
 		}
-		get_opcode(cmd)(&head, global.line_number);
+		get_opcode(cmd)(&global.stack, global.line_number);
 		free(l_tok);
 		i++;
 	}
-	free_stack(head);
+	free_stack(global.stack);
 }
-
-void check_args(char *cmd, unsigned int line_number)
-{
-	
-}
+/**
+ *   void check_args(char *cmd, unsigned int line_number)
+ * {
+ *
+ * }
+ */
