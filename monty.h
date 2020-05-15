@@ -43,6 +43,9 @@ char *read_textfile(const char* file, size_t chars);
 char **tokenize(char *fb);
 void add_dstack_list(stack_t **stack, unsigned int line_number);
 void pall_dstack_list(stack_t **stack, unsigned int line_number);
+void pint_monty(stack_t **stack, unsigned int line_number)
+void pop_monty(stack_t **stack, unsigned int line_number)
+void swap_monty(stack_t **stack, unsigned int line_number)
 /*get_opcode*/
 void execute_line(char *s, stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *s))(stack_t **, unsigned int);
