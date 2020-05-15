@@ -16,7 +16,7 @@ void exe_monty(char **av_line)
 		cmd = strtok(NULL, " ");
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{
-		        num = strdup(cmd);
+			num = strdup(cmd);
 			free(l_tok);
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
@@ -37,10 +37,8 @@ void exe_monty(char **av_line)
 				continue;
 			}
 			else if (strcmp(cmd, "push") == 0)
-			{
 				print_error_usage(global.line_number);
 
-			}
 		}
 		get_opcode(cmd)(&global.stack, global.line_number);
 		free(l_tok);
