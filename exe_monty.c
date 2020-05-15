@@ -16,17 +16,14 @@ void exe_monty(char **av_line)
 		cmd = strtok(NULL, " ");
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{
-			num = strdup(cmd);
+		        num = strdup(cmd);
 			free(l_tok);
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
 			global.value = atoi(num);
 			free(num);
 			if (!(global.value))
-			{
-				free_all(l_tok, num);
-				print_error_usage(i + 1);
-			}
+				do_non_int_error(l_tok);
 		}
 		else
 		{
@@ -51,9 +48,12 @@ void exe_monty(char **av_line)
 	}
 	free_stack(global.stack);
 }
-/**
- *   void check_args(char *cmd, unsigned int line_number)
- * {
- *
- * }
- */
+
+void do_non_int_error(char *l_tok)
+{
+	free(l_tok);
+	free_stack(global.stack);
+	free(global.av_line);
+	free(global.line);
+	print_error_usage(global.line_number);
+}
