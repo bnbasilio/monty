@@ -40,8 +40,8 @@ void exe_monty(char **av_line)
 				continue;
 			}
 		}
-		get_opcode(cmd)(&head, 0);
 		free(l_tok);
+		execute_line(cmd, &head, i + 1);
 		i++;
 	}
 	free_stack(head);

@@ -21,6 +21,34 @@ void (*get_opcode(char *s))(stack_t **, unsigned int)
 		}
 		i++;
 	}
-	fprintf(stderr, "L<line_number>: unknown instruction %s\n", s);
+	fprintf(stderr, "L: unknown instruction %s\n", s);
+	exit(EXIT_FAILURE);
+}
+/**
+ * execute_line - function that executes string
+ * @s: opcode name
+ * @stack: starting node at the stack doubly linked list
+ * @line_number: line number in integer
+ */
+void execute_line(char *s, stack_t **stack, unsigned int line_number)
+{
+		instruction_t ops[] = {
+		{"push", add_dstack_list},
+		{"pall", pall_dstack_list},
+		{NULL, NULL}
+	};
+	int i = 0;
+
+	while (ops[i].opcode != NULL)
+	{
+		if (strcmp(s, ops[i].opcode) == 0)
+		{
+			ops[i].f(stack, line_number);
+			return;
+		}
+		i++;
+	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, s);
+	free_stack(*stack);
 	exit(EXIT_FAILURE);
 }

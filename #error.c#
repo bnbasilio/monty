@@ -1,8 +1,7 @@
 #include "monty.h"
 /**
  * print_error_usage - print the error message for usage
- * @line_number
- *
+ * @line_number: line number
  */
 void print_error_usage(unsigned int line_number)
 {

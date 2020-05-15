@@ -10,7 +10,7 @@ push 5
     pall
 
 
-push 7
+fdwfw
 
 
 pall
