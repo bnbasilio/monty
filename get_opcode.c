@@ -9,6 +9,14 @@ void (*get_opcode(char *s))(stack_t **, unsigned int)
 	instruction_t ops[] = {
 		{"push", add_dstack_list},
 		{"pall", pall_dstack_list},
+		{"pint", pint_monty},
+		{"pop", pop_monty},
+		{"swap", swap_monty},
+		{"add", add_monty},
+		{"nop", nop_monty},
+		{"sub", sub_monty},
+		{"div", div_monty},
+		{"mul", mul_monty},
 		{NULL, NULL}
 	};
 	int i = 0;
