@@ -25,7 +25,7 @@ void add_monty(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * nop - does not do anything
+ * nop_monty - does not do anything
  * @stack: a starting address of stack doubly linked list
  * @line_number: line number in file
  */
@@ -37,7 +37,7 @@ void nop_monty(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * sub_monty - subtracts the top element from the second top element of the stack
+ * sub_monty - subtracts the top element from the second element of the stack
  * @stack: a starting address of stack doubly linked list
  * @line_number: line number in file
  */
