@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	}
 	global.line = read_textfile(argv[1], 1024);
 	global.av_line = tokenize(global.line);
-	
+
 	exe_monty(global.av_line);
 	free(global.av_line);
 	free(global.line);
