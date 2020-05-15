@@ -46,6 +46,11 @@ void pall_dstack_list(stack_t **stack, unsigned int line_number);
 void pint_monty(stack_t **stack, unsigned int line_number);
 void pop_monty(stack_t **stack, unsigned int line_number);
 void swap_monty(stack_t **stack, unsigned int line_number);
+void add_monty(stack_t **stack, unsigned int line_number)
+void nop_monty(stack_t **stack, unsigned int line_number)
+void sub_monty(stack_t **stack, unsigned int line_number)
+void mul_monty(stack_t **stack, unsigned int line_number)
+void div_monty(stack_t **stack, unsigned int line_number)
 /*get_opcode*/
 void execute_line(char *s, stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *s))(stack_t **, unsigned int);
