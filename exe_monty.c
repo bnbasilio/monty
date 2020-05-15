@@ -30,7 +30,7 @@ void exe_monty(char **av_line)
 			free(l_tok);
 			l_tok = strdup(av_line[i]);
 			cmd = strtok(l_tok, " ");
-			if (cmd == NULL)
+			if (cmd == NULL || cmd[0] == '#')
 			{
 				i++;
 				free(l_tok);
