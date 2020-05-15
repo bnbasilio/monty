@@ -52,5 +52,23 @@ void pchar_monty(stack_t **stack, unsigned int line_no)
 		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n", line_no);
 		exit(EXIT_FAILURE);
 	}
-	putchar((*stack)->n);
+	printf("%c\n", (*stack)->n);
+}
+
+/**
+ * pstr_monty - prints the string starting at the top of the stack
+ * @stack: a starting address of stack doubly linked list
+ * @line_number: line number in file
+ */
+
+void pstr_monty(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	while (*stack && (*stack)->n > 0 && (*stack)->n <= 127)
+	{
+		printf("%c", (*stack)->n);
+		stack = (*stack)->next;
+	}
+	printf("\n");
 }

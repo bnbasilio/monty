@@ -65,7 +65,7 @@ void mul_monty(stack_t **stack, unsigned int line_number);
 void div_monty(stack_t **stack, unsigned int line_number);
 void mod_monty(stack_t **stack, unsigned int line_number);
 void pchar_monty(stack_t **stack, unsigned int line_no);
-
+void pstr_monty(stack_t **stack, unsigned int line_number);
 /*get_opcode*/
 void execute_line(char *s, stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *s))(stack_t **, unsigned int);
