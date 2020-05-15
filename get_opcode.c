@@ -17,6 +17,8 @@ void (*get_opcode(char *s))(stack_t **, unsigned int)
 		{"sub", sub_monty},
 		{"div", div_monty},
 		{"mul", mul_monty},
+		{"mod", mod_monty},
+		{"pchar", pchar_monty},
 		{NULL, NULL}
 	};
 	int i = 0;
