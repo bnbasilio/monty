@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * get_num_words - returns the nuumber of lines in the file
+ * @filename: the file to be scanned
+ * Return: number of lines in the file
+ */
 
 unsigned int get_num_words(char *filename)
 {
@@ -22,12 +27,18 @@ unsigned int get_num_words(char *filename)
 	do {
 		read = getline(&line, &n, file);
 		line_number++;
-	} while(read != EOF);
+	} while (read != EOF);
 	free(line);
 	line = NULL;
-        fclose(file);
+	fclose(file);
 	return (line_number);
 }
+
+/**
+ * tokenize - splits the file into tokens
+ * @filename: file to be scanned
+ * Return: array of tokens
+ */
 
 char **tokenize(char *filename)
 {
@@ -50,7 +61,7 @@ char **tokenize(char *filename)
 	}
 
 	line_number = 0;
-	while((read = getline(&line, &n, file)) != EOF)
+	while ((read = getline(&line, &n, file)) != EOF)
 	{
 		if (line[0] == '\n')
 			av[line_number] = strdup(" ");
