@@ -43,6 +43,11 @@ char **tokenize(char *filename)
 	file = fopen(filename, "r");
 
 	av = malloc(sizeof(char *) * (line_number));
+	if (!av)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 
 	line_number = 0;
 	while((read = getline(&line, &n, file)) != EOF)
