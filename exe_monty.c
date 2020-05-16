@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * itr_free - function that iterates the index value and
  * and free the token string buffer
@@ -46,8 +47,6 @@ char *get_cmd_arg(char *av_line)
 	arg = strtok(global.l_tok, " \0");
 	return (arg);
 }
-
-
 /**
  * exe_monty - a fucntion that executes the bytecode .m file
  * @av_line: contents from .m file in array of strings
@@ -65,19 +64,16 @@ void exe_monty(char **av_line)
 			i++;
 			continue;
 		}
-		cmd = get_cmd_arg(av_line[i]);
-		cmd = strtok(NULL, " ");
-		if (cmd != NULL)/*check for another argument after cmd*/
+		cmd = get_cmd_arg(av_line[i]);/*get the command*/
+		cmd = strtok(NULL, " ");/*get the 2nd argument*/
+		if (cmd != NULL)/*check for 2nd argument*/
 		{
 			num = strdup(cmd);
 			free(global.l_tok);
 			cmd = get_cmd_arg(av_line[i]);
-			global.value = atoi(num);
-			free(num);
-			if (!(global.value))
-				do_non_int_error(cmd);
+			_args_decision(num, cmd);
 		}
-		else
+		else /*case for only one argument*/
 		{
 			free(global.l_tok);
 			cmd = get_cmd_arg(av_line[i]);
@@ -87,7 +83,7 @@ void exe_monty(char **av_line)
 				continue;
 			}
 			else if (strcmp(cmd, "push") == 0)
-				print_error_usage(global.line_number);
+				do_non_int_error(global.l_tok);
 
 		}
 		i = exe_line(cmd, global.l_tok, i);

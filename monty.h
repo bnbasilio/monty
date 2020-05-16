@@ -80,4 +80,8 @@ void print_error_usage(unsigned int line_number);
 /*exe_monty.c*/
 void exe_monty(char **av_line);
 void do_non_int_error(char *l_tok);
+/*isNum.c*/
+int isNum(char *num);
+/*arg_decision.c*/
+void _args_decision(char *num, char *cmd);
 #endif
