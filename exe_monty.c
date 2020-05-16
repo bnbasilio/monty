@@ -18,7 +18,7 @@ void exe_monty(char **av_line)
 			continue;
 		}
 		global.l_tok = strdup(av_line[i]);
-	        cmd = strtok(global.l_tok, " \0");
+		cmd = strtok(global.l_tok, " \0");
 		cmd = strtok(NULL, " ");
 		if (cmd != NULL)/*check for another argument after cmd*/
 		{

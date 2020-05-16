@@ -1,85 +1,63 @@
 #include "monty.h"
 
-/**
- * read_textfile - reads a text file and returns a buffer of the bytes read
- * @file: file to be read
- * @chars: number of characters that should be read
- *
- * Return: number of characters actually read
- */
 
-char *read_textfile(const char *file, size_t chars)
+unsigned int get_num_words(char *filename)
 {
-	int fd;
-	char *buffer;
-	ssize_t read_len;
+	FILE *file;
+	char *line = NULL;
+	unsigned int line_number = 0;
+	ssize_t read;
+	size_t n = 0;
 
+	file = fopen(filename, "r");
 	if (!file)
-		return (NULL);
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", file);
-		exit(EXIT_FAILURE);
-	}
-	buffer = malloc(sizeof(char) * (chars + 1));
-	if (!buffer)
-	{
-		close(fd);
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
+		free_av(global.av_line);
+		free_stack(global.stack);
+		free(global.l_tok);
 		exit(EXIT_FAILURE);
 	}
 
-	read_len = read(fd, buffer, chars);
-	if (read_len == -1)
-	{
-		free(buffer);
-		close(fd);
-		return (NULL);
-	}
-	buffer[read_len] = '\0';
-
-	close(fd);
-	return (buffer);
+	do {
+		read = getline(&line, &n, file);
+		line_number++;
+	} while(read != EOF);
+	free(line);
+	line = NULL;
+        fclose(file);
+	return (line_number);
 }
 
-/**
- * tokenize - splits a buffer into tokens
- * @fb: file buffer to be tokenized
- * Return: an array of tokens
- */
-
-char **tokenize(char *fb)
+char **tokenize(char *filename)
 {
-	char *fb_dup = NULL;
-	char *av_tok, **av = NULL;
-	int i, str_count, n;
+	FILE *file;
+	char *line = NULL;
+	size_t n = 0;
+	ssize_t read;
+	char **av;
+	unsigned int line_number = 0;
 
-	if (!fb)
-		return (NULL);
+	line_number = get_num_words(filename);
 
-	fb_dup = strdup(fb);
-	for (n = 0, str_count = 0; fb_dup[n]; n++)
+	file = fopen(filename, "r");
+
+	av = malloc(sizeof(char *) * (line_number));
+
+	line_number = 0;
+	while((read = getline(&line, &n, file)) != EOF)
 	{
-		if (fb_dup[n] == '\n')
-			str_count++;
+		if (line[0] == '\n')
+			av[line_number] = strdup(" ");
+		else
+		{
+			line[read - 1] = '\0';
+			av[line_number] = strdup(line);
+		}
+		line_number++;
 	}
-	free(fb_dup);
-
-	av = malloc(sizeof(char *) * (str_count + 1));
-	if (!av)
-	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	av_tok = strtok(fb, "\n");
-	av[0] = av_tok;
-	for (i = 1; av_tok; i++)
-	{
-		av_tok = strtok(NULL, "\n");
-		av[i] = av_tok;
-	}
-
+	av[line_number] = NULL;
+	fclose(file);
+	free(line);
 	return (av);
 }

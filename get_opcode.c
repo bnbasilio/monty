@@ -34,8 +34,7 @@ void (*get_opcode(char *s))(stack_t **, unsigned int)
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", global.line_number, s);
 	free_stack(global.stack);
-	free(global.line);
 	free(global.l_tok);
-	free(global.av_line);
+	free_av(global.av_line);
 	exit(EXIT_FAILURE);
 }

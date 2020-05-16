@@ -16,11 +16,11 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: %s filename\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
-	global.line = read_textfile(argv[1], 1024);
-	global.av_line = tokenize(global.line);
+
+	global.av_line = tokenize(argv[1]);
 
 	exe_monty(global.av_line);
-	free(global.av_line);
-	free(global.line);
+	free_av(global.av_line);
+
 	return (0);
 }
