@@ -6,7 +6,7 @@ push 5
            
          
   push   9
-     push sdf
+     push 89
     pall
 
 
@@ -18,4 +18,4 @@ pall
 
 
 
-
+     
