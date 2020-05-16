@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s filename\n", argv[0]);
+		dprintf(STDERR_FILENO, "Usage: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
