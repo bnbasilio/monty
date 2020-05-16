@@ -1,5 +1,23 @@
 #include "monty.h"
-unsigned int exe_line(char *cmd, char *l_tok, unsigned int i);
+/**
+ * exe_line - function that executes op_fucntions
+ * free the string tok buffer and returns next
+ * index value
+ * @cmd: command name
+ * @l_tok: string token buffer
+ * @i: value of index for av_line
+ * Return: new index value for av_line
+ */
+unsigned int exe_line(char *cmd, char *l_tok, unsigned int i)
+{
+	int new;
+
+	get_opcode(cmd)(&global.stack, global.line_number);
+	new = i + 1;
+	free(l_tok);
+	return (new);
+}
+
 /**
  * exe_monty - a fucntion that executes the bytecode .m file
  * @av_line: contents from .m file in array of strings
@@ -61,22 +79,4 @@ void do_non_int_error(char *l_tok)
 	free(global.av_line);
 	free(global.line);
 	print_error_usage(global.line_number);
-}
-/**
- * exe_line - function that executes op_fucntions
- * free the string tok buffer and returns next
- * index value
- * @cmd: command name
- * @l_tok: string token buffer
- * @i: value of index for av_line
- * Return: new index value for av_line
- */
-unsigned int exe_line(char *cmd, char *l_tok, unsigned int i)
-{
-	int new;
-
-	get_opcode(cmd)(&global.stack, global.line_number);
-	new = i + 1;
-	free(l_tok);
-	return (new);
 }
