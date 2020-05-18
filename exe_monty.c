@@ -56,6 +56,7 @@ void exe_monty(char **av_line)
 {
 	char *cmd = NULL, *num = NULL;
 	unsigned int i = 0;
+
 	while (av_line[i])
 	{
 		global.line_number = i + 1;
