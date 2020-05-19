@@ -63,12 +63,14 @@ void pchar_monty(stack_t **stack, unsigned int line_no)
 
 void pstr_monty(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
 	(void)line_number;
 
-	while (*stack && (*stack)->n > 0 && (*stack)->n <= 127)
+	temp = *stack;
+	while (temp && temp->n > 0 && temp->n <= 127)
 	{
-		printf("%c", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%c", temp->n);
+		temp = temp->next;
 	}
 	printf("\n");
 }
