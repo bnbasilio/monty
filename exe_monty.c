@@ -47,6 +47,7 @@ char *get_cmd_arg(char *av_line)
 	arg = strtok(global.l_tok, " \0");
 	return (arg);
 }
+
 /**
  * exe_monty - a fucntion that executes the bytecode .m file
  * @av_line: contents from .m file in array of strings
@@ -59,11 +60,6 @@ void exe_monty(char **av_line)
 	while (av_line[i])
 	{
 		global.line_number = i + 1;
-		if (av_line[i][0] == '#')
-		{
-			i++;
-			continue;
-		}
 		cmd = get_cmd_arg(av_line[i]);/*get the command*/
 		cmd = strtok(NULL, " ");/*get the 2nd argument*/
 		if (cmd != NULL)/*check for 2nd argument*/
@@ -71,6 +67,12 @@ void exe_monty(char **av_line)
 			num = strdup(cmd);
 			free(global.l_tok);
 			cmd = get_cmd_arg(av_line[i]);
+			if (cmd[0] == '#')
+			{
+				i = itr_free(global.l_tok, i);
+				free(num);
+				continue;
+			}
 			_args_decision(num, cmd);
 		}
 		else /*case for only one argument*/
@@ -84,7 +86,6 @@ void exe_monty(char **av_line)
 			}
 			else if (strcmp(cmd, "push") == 0)
 				do_non_int_error(global.l_tok);
-
 		}
 		i = exe_line(cmd, global.l_tok, i);
 	}
